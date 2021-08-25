@@ -121,8 +121,8 @@ void threadPoolAdd(ThreadPool* pool, void(*func)(void*), void* arg)
 	pool->queueRear = (pool->queueRear + 1) % pool->queueCapacity;
 	pool->queueSize++;
 
-	pthread_cond_signal(&pool->notEmpty);
 	pthread_mutex_unlock(&pool->mutexPool);
+	pthread_cond_signal(&pool->notEmpty);
 }
 
 int threadPoolBusyNum(ThreadPool* pool)
