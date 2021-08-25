@@ -257,6 +257,12 @@ void* manager(void* arg)
 				pthread_cond_signal(&pool->notEmpty);
 			}
 		}
+		//唤醒线程
+		//未执行的任务个数queueSize > 0 && 忙的线程个数小于 < 存活的线程个数 
+		if(queueSize > 0 && busyNum < liveNum)
+		{
+			pthread_cond_signal(&pool->notEmpty);
+		}
 	}
 }
 
