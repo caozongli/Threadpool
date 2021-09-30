@@ -10,7 +10,7 @@
 #include <arpa/inet.h>
 #include <ctype.h>
 
-#define SERVER_PORT 8000
+#define SERVER_PORT 2333
 #define MAXLINE 80
 
 struct s_info
